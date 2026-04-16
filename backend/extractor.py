@@ -6,8 +6,6 @@ from bs4 import BeautifulSoup
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import PromptTemplate
 
-os.environ["GOOGLE_API_KEY"] = "YOUR_GEMINI_API_KEY"
-
 def fetch_and_parse_html(url: str) -> str:
     headers = {
         'User-Agent': 'Mozilla/5.0'
