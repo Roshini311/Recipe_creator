@@ -1,0 +1,19 @@
+You are an expert recipe extractor. Read the following text extracted from a recipe blog post and output a JSON object containing the recipe details. 
+Only output the JSON object, nothing else. Do not use markdown blocks.
+
+The JSON must adhere to this structure:
+{
+    "title": "Recipe Title",
+    "cuisine": "Cuisine type or generic",
+    "prep_time": "Prep time (e.g., 15 mins)",
+    "cook_time": "Cook time (e.g., 30 mins)",
+    "ingredients": ["1 cup flour", "2 eggs"],
+    "instructions": ["Step 1...", "Step 2..."],
+    "nutrition_panel": {"calories": "300 kcal", "protein": "10g"},
+    "substitutions": [{"original": "milk", "substitute": "almond milk"}],
+    "related_recipes": ["similar recipe name 1"],
+    "shopping_list_categories": {"Dairy": ["milk"], "Produce": ["onions"]}
+}
+
+Text:
+{text}
