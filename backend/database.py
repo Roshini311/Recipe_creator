@@ -7,26 +7,10 @@ DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:password@localho
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
 Base = declarative_base()
-
-class Recipe(Base):
-    __tablename__ = "recipes"
-
-    id = Column(Integer, primary_key=True)
-    url = Column(String)
-    data = Column(JSON)
-
-Base.metadata.create_all(bind=engine)
-
-def save_recipe(url, data):
+# Dependency
+def get_db():
     db = SessionLocal()
-    recipe = Recipe(url=url, data=data)
-    db.add(recipe)
-    db.commit()
-    db.close()
-
-def get_all_recipes():
-    db = SessionLocal()
-    recipes = db.query(Recipe).all()
-    db.close()
-
-    return [{"url": r.url, "data": r.data} for r in recipes]
+    try:
+        yield db
+    finally:
+        db.close()
